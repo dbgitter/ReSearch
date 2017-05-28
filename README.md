@@ -18,5 +18,5 @@ The code was generated and runs in MatLab and can be adapted to C or other langu
 The input format is a 1 column list of resistor values in a text file.  Engineering, scientific, integer or decimal format can be used (for MatLab).
 
 
-Please see the "unformatted" description text in ResCalc_Publish03.txt for the full readme text.  Use the raw format.
+Please see the "unformatted" description text in ReSearch_info.txt for the full readme text.  Use the raw format.
 
