@@ -1,4 +1,4 @@
-# ReSearch-Folder
+# ReSearch
 Program to calculate parallel resistances
 
                        ReSearch - The Resistor Search program 
