@@ -7,7 +7,7 @@ Program to calculate parallel resistances
 
 The average hobbyist might own a few resistor kits, but if you don't want to own every resistance value or are in a hurry to breadboard something and you need an exact resistance value, you will want to combine resistors to make up what you need.  But who wants to search through all their resistors every time then calculate the required value from what's on hand or worse yet to just get within 10 or 20%.  As we will find out, the key is knowing what's on hand.  
 
-It turns out, you can figure it all out ahead of time!  You might ask, "Why would I do that, it would take far to much time!". But with a little up front work and the ReSearch program you can easily expand your list of resistance choices by many times.
+It turns out, you can figure it all out ahead of time!  You might ask, "Why would I do that, it would take far too much time!". But with a little up front work and the ReSearch program you can easily expand your list of resistance choices by many times.
 
 One approach might be to compute all combinations of resistors in series and parallel.  That could produce a very large, complicated result.  My approach was to select certain combinations of resistors in parallel, calculate those and list the results.  Since it doesn't help much to combine very large values with very small ones , e.g, 1 megohm with 1 ohm, the values selected should be closer together.  Going from this principle, I chose to use sets of increasing value resistors, with the first in the set (lowest value), paired consecutively with each of the next higher values on the list.  This is done for the entire range of owned resistors in a moving window fashion.  Each set yields n values when including the value of the owned resistor and the value of combining the owned resistor with itself where n is two plus the number of consecutive owned resistors.  The program thus produces a new list of resistance values several times greater than the list of owned resistors .
 
@@ -17,6 +17,7 @@ The code was generated and runs in MatLab and can be adapted to C or other langu
 
 The input format is a 1 column list of resistor values in a text file.  Engineering, scientific, integer or decimal format can be used (for MatLab).
 
+The output shows a list of resistance values to use, the actual resistance found, and the actual tolerance achieved.
 
-Please see the "unformatted" description text in ReSearch_Info.txt for the full readme text.  Use the raw format.
+Please see the "unformatted" description text in ReSearch_Info.txt for the full description.  Use the raw format.
 
