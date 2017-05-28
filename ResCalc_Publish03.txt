@@ -1,0 +1,163 @@
+
+                       ReSearch - The Resistor Search program 
+                (Or How To Instantly Increase Your Resistor Inventory)
+
+
+The average hobbyist might own a few resistor kits, but if you don't want to own every resistance value or are in a hurry to breadboard something and you need an exact resistance value, you will want to combine resistors to make up what you need.  But who wants to search through all their resistors every time then calculate the required value from what's on hand or worse yet to just get within 10 or 20%.  As we will find out, the key is knowing what's on hand.  
+
+It turns out, you can figure it all out ahead of time!  You might ask, "Why would I do that, it would take far to much time!". But with a little up front work and the ReSearch program you can easily expand your list of resistance choices by many times.
+
+One approach might be to compute all combinations of resistors in series and parallel.  That could produce a very large, complicated result.  My approach was to select certain combinations of resistors in parallel, calculate those and list the results.  Since it doesn't help much to combine very large values with very small ones , e.g, 1 megohm with 1 ohm, the values selected should be closer together.  Going from this principle, I chose to use sets of increasing value resistors, with the first in the set (lowest value), paired consecutively with each of the next higher values on the list.  This is done for the entire range of owned resistors in a moving window fashion.  Each set yields n values when including the value of the owned resistor and the value of combining the owned resistor with itself where n is two plus the number of consecutive owned resistors.  The program thus produces a new list of resistance values several times greater than the list of owned resistors .
+
+As mentioned above, the key is knowing your owned resistor values.  It may seem to be a boring, tedious task, but making and keeping an up-to-date list of all your resistor values is the key to expanding your list many fold to say nothing of just knowing what you have on hand.  I have a few kits containing a total of 51 values, and it took me less than 10 minutes to create the list in a text file. So for just a little up front (and ongoing) effort I now have a list of about 600 resistance values to choose from. To make up any desired resistance, it is only necessary to choose the values from the new list and place them in series.
+
+The code was generated and runs in MatLab and can be adapted to C or other languages and will be available on Github
+
+The input format is a 1 column list of resistor values in a text file.  Engineering, scientific, integer or decimal format can be used (for MatLab) as in the following example of 12 values:
+
+  1  1.6    
+  2  3      
+  3  50.2   
+  4  170    
+  5  4.7E+02
+  6  1000   
+  7  2E+03  
+  8  2.2E+03
+  9  5000   
+  10 6700   
+  11 1.2E+04
+  12 1.2E+06
+ 
+Normally I use a search depth of 10 which in this case would yield 89 values, but for purposes of shortening the article we are using a search depth of 3.
+The above example input yielded the following list of 54 computed values with a search depth of 3:
+
+      Computed      Owned        Owned            Computed      Owned        Owned    
+     Resistance   Resistor #1  Resistor #2       Resistance   Resistor #1  Resistor #2
+
+  1  8.0000e-01   1.6000e+00   1.6000e+00     28 6.8750e+02   1.0000e+03   2.2000e+03
+  2  1.0435e+00   1.6000e+00   3.0000e+00     29 8.3333e+02   1.0000e+03   5.0000e+03
+  3  1.5000e+00   3.0000e+00   3.0000e+00     30 1.0000e+03            0            0
+  4  1.5506e+00   1.6000e+00   5.0200e+01     31 1.0000e+03   2.0000e+03   2.0000e+03
+  5  1.5851e+00   1.6000e+00   1.7000e+02     32 1.0476e+03   2.0000e+03   2.2000e+03
+  6  1.6000e+00            0            0     33 1.1000e+03   2.2000e+03   2.2000e+03
+  7  2.8308e+00   3.0000e+00   5.0200e+01     34 1.4286e+03   2.0000e+03   5.0000e+03
+  8  2.9480e+00   3.0000e+00   1.7000e+02     35 1.5278e+03   2.2000e+03   5.0000e+03
+  9  2.9810e+00   3.0000e+00   4.7000e+02     36 1.5402e+03   2.0000e+03   6.7000e+03
+  10 3.0000e+00            0            0     37 1.6562e+03   2.2000e+03   6.7000e+03
+  11 2.5100e+01   5.0200e+01   5.0200e+01     38 1.8592e+03   2.2000e+03   1.2000e+04
+  12 3.8756e+01   5.0200e+01   1.7000e+02     39 2.0000e+03            0            0
+  13 4.5356e+01   5.0200e+01   4.7000e+02     40 2.2000e+03            0            0
+  14 4.7800e+01   5.0200e+01   1.0000e+03     41 2.5000e+03   5.0000e+03   5.0000e+03
+  15 5.0200e+01            0            0     42 2.8632e+03   5.0000e+03   6.7000e+03
+  16 8.5000e+01   1.7000e+02   1.7000e+02     43 3.3500e+03   6.7000e+03   6.7000e+03
+  17 1.2484e+02   1.7000e+02   4.7000e+02     44 3.5294e+03   5.0000e+03   1.2000e+04
+  18 1.4530e+02   1.7000e+02   1.0000e+03     45 4.2995e+03   6.7000e+03   1.2000e+04
+  19 1.5668e+02   1.7000e+02   2.0000e+03     46 4.9793e+03   5.0000e+03   1.2000e+06
+  20 1.7000e+02            0            0     47 5.0000e+03            0            0
+  21 2.3500e+02   4.7000e+02   4.7000e+02     48 6.0000e+03   1.2000e+04   1.2000e+04
+  22 3.1973e+02   4.7000e+02   1.0000e+03     49 6.6628e+03   6.7000e+03   1.2000e+06
+  23 3.8057e+02   4.7000e+02   2.0000e+03     50 6.7000e+03            0            0
+  24 3.8727e+02   4.7000e+02   2.2000e+03     51 1.1881e+04   1.2000e+04   1.2000e+06
+  25 4.7000e+02            0            0     52 1.2000e+04            0            0
+  26 5.0000e+02   1.0000e+03   1.0000e+03     53 6.0000e+05   1.2000e+06   1.2000e+06
+  27 6.6667e+02   1.0000e+03   2.0000e+03     54 1.2000e+06            0            0
+
+The program can also add up the required resistance values to form the required resistance.  For example, If a value of 1234 ohms is requested, the program will choose  the combination of resistances #33, #17 and #10 twice from the ncsorted table to form a resistance of  1.2308e+003  which is less than 0.3% different from the requested value (see the session output below).  For this mix of owned resistors the same result is also attainable with only a search depth of 2.
+
+For each computed set, the output list includes each owned resistor, the owned resistor paired with itself, and the 10 successive resistor combinations.  Each row of the output list contains from left to right: the combined value, selected resistor #1, and selected resistor #2.  Resistor #1 and resistor #2 are zero in rows containing the owned resistor.
+
+With a search depth of 10 we can increase our choice of resistance by a factor of 7.  In this case, a search depth of 3 yielded a factor of over 4.
+
+Even if you don’t have access to the program, If someone runs the list for you, you can print it out and easily use it to add up the required resistor values.
+
+This is only one of an infinite number of possible algorithms to conduct a search.  Some alternatives would be changing the search depth, or the set selection process or the number of parallel resistances.  Development is ongoing.  So check back for updates.  
+
+The source code will be available at https://github.com.
+
+
+Here is the entire MatLab session output:
+
+=======================Begin MatLab Output========================================
+>> ReSearch
+Resistor list file name ?  /Users/dan/Documents/MATLAB/inputReslistPublish.txt
+Search depth ? (0 ends program) 3
+Desired resistance ?  1234
+Desired resistance tolerance in percent ?  0.3
+
+Use_these_ncsorted_resistances =
+
+     1.1000e+003
+   124.8438e+000
+     3.0000e+000
+     3.0000e+000
+
+
+To_obtain_this_resistance =
+
+     1.2308e+003
+
+
+Actual_Tolerance =
+
+      0.25577
+
+
+ncsorted =
+
+   8.0000e-01   1.6000e+00   1.6000e+00
+   1.0435e+00   1.6000e+00   3.0000e+00
+   1.5000e+00   3.0000e+00   3.0000e+00
+   1.5506e+00   1.6000e+00   5.0200e+01
+   1.5851e+00   1.6000e+00   1.7000e+02
+   1.6000e+00            0            0
+   2.8308e+00   3.0000e+00   5.0200e+01
+   2.9480e+00   3.0000e+00   1.7000e+02
+   2.9810e+00   3.0000e+00   4.7000e+02
+   3.0000e+00            0            0
+   2.5100e+01   5.0200e+01   5.0200e+01
+   3.8756e+01   5.0200e+01   1.7000e+02
+   4.5356e+01   5.0200e+01   4.7000e+02
+   4.7800e+01   5.0200e+01   1.0000e+03
+   5.0200e+01            0            0
+   8.5000e+01   1.7000e+02   1.7000e+02
+   1.2484e+02   1.7000e+02   4.7000e+02
+   1.4530e+02   1.7000e+02   1.0000e+03
+   1.5668e+02   1.7000e+02   2.0000e+03
+   1.7000e+02            0            0
+   2.3500e+02   4.7000e+02   4.7000e+02
+   3.1973e+02   4.7000e+02   1.0000e+03
+   3.8057e+02   4.7000e+02   2.0000e+03
+   3.8727e+02   4.7000e+02   2.2000e+03
+   4.7000e+02            0            0
+   5.0000e+02   1.0000e+03   1.0000e+03
+   6.6667e+02   1.0000e+03   2.0000e+03
+   6.8750e+02   1.0000e+03   2.2000e+03
+   8.3333e+02   1.0000e+03   5.0000e+03
+   1.0000e+03            0            0
+   1.0000e+03   2.0000e+03   2.0000e+03
+   1.0476e+03   2.0000e+03   2.2000e+03
+   1.1000e+03   2.2000e+03   2.2000e+03
+   1.4286e+03   2.0000e+03   5.0000e+03
+   1.5278e+03   2.2000e+03   5.0000e+03
+   1.5402e+03   2.0000e+03   6.7000e+03
+   1.6562e+03   2.2000e+03   6.7000e+03
+   1.8592e+03   2.2000e+03   1.2000e+04
+   2.0000e+03            0            0
+   2.2000e+03            0            0
+   2.5000e+03   5.0000e+03   5.0000e+03
+   2.8632e+03   5.0000e+03   6.7000e+03
+   3.3500e+03   6.7000e+03   6.7000e+03
+   3.5294e+03   5.0000e+03   1.2000e+04
+   4.2995e+03   6.7000e+03   1.2000e+04
+   4.9793e+03   5.0000e+03   1.2000e+06
+   5.0000e+03            0            0
+   6.0000e+03   1.2000e+04   1.2000e+04
+   6.6628e+03   6.7000e+03   1.2000e+06
+   6.7000e+03            0            0
+   1.1881e+04   1.2000e+04   1.2000e+06
+   1.2000e+04            0            0
+   6.0000e+05   1.2000e+06   1.2000e+06
+   1.2000e+06            0            0
+==========================End MatLab Output=====================================
+
+
