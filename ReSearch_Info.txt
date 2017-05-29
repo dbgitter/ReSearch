@@ -11,7 +11,7 @@ One approach might be to compute all combinations of resistors in series and par
 
 As mentioned above, the key is knowing your owned resistor values.  It may seem to be a boring, tedious task, but making and keeping an up-to-date list of all your resistor values is the key to expanding your list many fold to say nothing of just knowing what you have on hand.  I have a few kits containing a total of 51 values, and it took me less than 10 minutes to create the list in a text file. So for just a little up front (and ongoing) effort I now have a list of over 500 resistance values to choose from. To make up any desired resistance, it is only necessary to choose the values from the new list and place them in series.  The list can then be printed out for future reference.
 
-The code was generated and runs in MatLab and can be adapted to C or other languages and will be available on Github
+The code was generated and runs in MatLab and can be adapted to C or other languages.
 
 The input format is a 1 column list of resistor values in a text file.  Engineering, scientific, integer or decimal format can be used (for MatLab) as in the following example of 12 values:
 
