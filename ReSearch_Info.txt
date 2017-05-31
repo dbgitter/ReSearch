@@ -64,7 +64,7 @@ The above example input yielded the following list of 54 computed values with a 
 
 The program can also add up the required resistance values to form the required resistance.  For example, If a value of 1234 ohms is requested, the program will choose  the combination of resistances #33, #17 and #10 twice from the ncsorted table to form a resistance of  1.2308e+003  which is less than 0.3% different from the requested value (see the session output below).  For this mix of owned resistors the same result is also attainable with only a search depth of 2.
 
-For each computed set, the output list includes each owned resistor, the owned resistor paired with itself, and the 10 successive resistor combinations.  Each row of the output list contains from left to right: the combined value, selected resistor #1, and selected resistor #2.  Resistor #1 and resistor #2 are zero in rows containing the owned resistor.
+For each computed set, the output list includes each owned resistor, the owned resistor paired with itself, and the 3 successive resistor combinations.  Each row of the output list contains from left to right: the combined value, selected resistor #1, and selected resistor #2.  Resistor #1 and resistor #2 are zero in rows containing the owned resistor.
 
 With a search depth of 10 we can increase our choice of resistance by a factor of 7.  In this case, a search depth of 3 yielded a factor of over 4.
 
