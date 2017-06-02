@@ -2,7 +2,7 @@
 Program to calculate parallel resistances
 
                        ReSearch - The Resistor Search program 
-                (Or How To Instantly Increase Your Resistor Inventory)
+                (A Practical Way To Instantly Increase Your Resistor Inventory)
 
 The ReSearch program allows the user to pre-calculate parallel resistance values from resistors on hand (owned).  The search depth determines the size of each combination set. A combination set is the group of resistors which will be paired to form the parallel resistor calculations.
 
