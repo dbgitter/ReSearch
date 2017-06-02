@@ -14,22 +14,22 @@ As mentioned above, the key is knowing your owned resistor values.  It may seem 
 The code was generated and runs in MatLab and can be adapted to C or other languages.
 
 The input format is a 1 column list of resistor values in a text file.  Engineering, scientific, integer or decimal format can be used (for MatLab) as in the following example of 12 values:
-
-  1  1.6    
-  2  3      
-  3  50.2   
-  4  170    
-  5  4.7E+02
-  6  1000   
+ 
+  1  1.6             ---|
+  2  3     ---|         |----  First set consists of resistors 1 through 3
+  3  50.2     |---   ---|
+  4  170   ---|   \
+  5  4.7E+02       \
+  6  1000           \----  Second Set consists of resistors 2 through 4  etc, etc.
   7  2E+03  
   8  2.2E+03
   9  5000   
   10 6700   
   11 1.2E+04
   12 1.2E+06
- 
+
 Normally I use a search depth of 10 which in this case would yield 89 values, but for purposes of shortening the example we are using a search depth of 3.
-The above example input yielded the following list of 54 computed values with a search depth of 3:
+The above example input yielded the following list of 54 computed values with a search depth of 3. The results are sorted in increasing value of computed resistance:
 
       Computed      Owned        Owned            Computed      Owned        Owned    
      Resistance   Resistor #1  Resistor #2       Resistance   Resistor #1  Resistor #2
