@@ -1,6 +1,6 @@
 
                        ReSearch - The Resistor Search program 
-                (Or How To Instantly Increase Your Resistor Inventory)
+                (A Practical Way To Instantly Increase Your Resistor Inventory)
 
 
 The average hobbyist might own a few resistor kits, but if you don't want to own every resistance value or are in a hurry to breadboard something and you need an exact resistance value, you will want to combine resistors to make up what you need.  But who wants to search through all their resistors every time then calculate the required value from what's on hand or worse yet to just get within 10 or 20%.  As we will find out, the key is knowing what's on hand.  
