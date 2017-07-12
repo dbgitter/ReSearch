@@ -68,7 +68,7 @@ For each computed set, the output list includes each owned resistor, the owned r
 
 With a search depth of 10 we can increase our choice of resistance by a factor of 7.  In this case, a search depth of 3 yielded a factor of over 4.
 
-Even if you don’t have access to the program, If someone runs the list for you, you can print it out and easily use it to add up the required resistor values.
+Even if you don’t have access to the program, If someone runs the list for you, you can print it out and easily use it to add up the required resistor values.  So now, when I need a resistance, the first thing I do is grab my printed out list and use it to construct the resistance I need.  I only need to print a new list when I obtain new resistor values.
 
 This is only one of an infinite number of possible algorithms to conduct a search.  Some alternatives would be changing the search depth, or the set selection process or the number of parallel resistances.  Development is ongoing.  So check back for updates.  
 
